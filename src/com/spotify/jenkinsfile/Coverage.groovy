@@ -71,7 +71,7 @@ def Double getCoverageDelta() {
 }
 
 def Double getCoverage(String ref) {
-  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'github-user-token',
+  withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'SONAR_GITHUB_TOKEN',
                     usernameVariable: 'NOT_USED', passwordVariable: 'TOKEN']]) {
 
     final coverage = sh(returnStdout: true, script: """#!/bin/bash -xe
