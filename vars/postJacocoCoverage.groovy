@@ -8,7 +8,7 @@ def call(Map args) {
     final lib = new com.spotify.jenkinsfile.Coverage()
 
     final Double coverage = lib.getCoverageFromJacoco(xmlPath)
-    System.out.println("Current coverage:" + coverage)
+    println("Current coverage:" + coverage)
     lib.postCoverage(coverage, coverageThreshold)
 
     final Double coverageDelta = lib.getCoverageDelta()
