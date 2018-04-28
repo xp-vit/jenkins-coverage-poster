@@ -83,7 +83,7 @@ def Double getCoverage(String ref) {
       if [[ ${ref} == HEAD ]]; then
         COMMIT_HASH=\$(git rev-parse HEAD)
       else
-        COMMIT_HASH=\$(git ls-remote https://${githubToken}:x-oauth-basic@\${GITHUB_HOST}:\${ORG}/\${REPO}.git "${ref}" | cut -f1)
+        COMMIT_HASH=\$(git ls-remote https://${githubToken}:x-oauth-basic@\${GITHUB_HOST}/\${ORG}/\${REPO}.git "${ref}" | cut -f1)
       fi
 
       COMMIT_STATUS_URL=\$(echo "https://\${GITHUB_API_URL}/repos/\${ORG}/\${REPO}/commits/\${COMMIT_HASH}/status")
