@@ -42,7 +42,7 @@ def Double getCoverageFromCoverageXml(String xmlPath) {
         final coverageXml = sh(returnStdout: true, script: '''#!/bin/bash -xe
       cat ${XML_PATH}
     ''')
-        def xml=new XmlSlurper().parseText(coverageXml)
+        def xml=new XmlSlurper().parse(xmlPath)
         println(xml.children())
         def coverage = xml.@'branch-rate'
         return coverage as Double
