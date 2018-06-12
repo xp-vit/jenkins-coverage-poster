@@ -33,7 +33,7 @@ for counter in root.findall("counter"):
 }
 
 def Double getCoverageFromCoverageXml(String xmlPath) {
-  def xml=new XmlSlurper().parse(xmlPath)
+  def xml=new XmlSlurper().parse( new File(xmlPath).getText())
   def coverage = xml.coverage.@branch-rate*100
   return coverage
 
