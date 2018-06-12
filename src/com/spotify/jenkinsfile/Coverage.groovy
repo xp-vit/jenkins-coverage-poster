@@ -39,7 +39,7 @@ def Double getCoverageFromCoverageXml(String xmlPath) {
     }
 
   def xml=new XmlSlurper().parse( new File(xmlPath).getText())
-  def coverage = xml.coverage.@branch-rate*100
+  def coverage = 100*xml.coverage.@branch-rate
   return coverage as Double
 
 }
