@@ -43,7 +43,7 @@ def Double getCoverageFromCoverageXml(String xmlPath) {
       cat ${XML_PATH}
     ''')
         def xml=new XmlSlurper().parseText(coverageXml)
-        println(xml.sources)
+        println(xml.coverage)
         def coverage = xml.@'branch-rate'
         return coverage as Double
     }
