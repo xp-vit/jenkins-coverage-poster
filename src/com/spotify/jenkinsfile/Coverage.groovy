@@ -38,9 +38,16 @@ def Double getCoverageFromCoverageXml(String xmlPath) {
         return null
     }
 
-  def xml=new XmlSlurper().parse( new File(xmlPath).getText())
-  def coverage = 100*xml.coverage.@branch-rate
-  return coverage as Double
+    withEnv(["XML_PATH=${xmlPath}"]) {
+        final coverageXml = sh(returnStdout: true, script: '''#!/bin/bash -xe
+      cat ${XML_PATH}
+    ''')
+        def xml=new XmlSlurper().parseText(coverageXml)
+        def coverage = 100*xml.coverage.@branch-rate
+        return coverage as Double
+    }
+
+
 
 }
 
