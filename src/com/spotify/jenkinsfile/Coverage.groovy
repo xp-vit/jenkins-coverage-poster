@@ -32,6 +32,13 @@ for counter in root.findall("counter"):
   }
 }
 
+def Double getCoverageFromCoverageXml(String xmlPath) {
+  def xml=new XmlSlurper().parse(xmlPath)
+  def coverage = xml.coverage.@branch-rate*100
+  return coverage
+
+}
+
 def postCoverage(Double coverage, Double threshold) {
   if(coverage == null || coverage == "") {
     echo "[WARNING] No coverage to post"
