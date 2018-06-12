@@ -33,6 +33,11 @@ for counter in root.findall("counter"):
 }
 
 def Double getCoverageFromCoverageXml(String xmlPath) {
+    if(!fileExists(xmlPath)) {
+        echo "[WARNING] coverage.xml report not found at ${xmlPath}"
+        return null
+    }
+
   def xml=new XmlSlurper().parse( new File(xmlPath).getText())
   def coverage = xml.coverage.@branch-rate*100
   return coverage as Double
